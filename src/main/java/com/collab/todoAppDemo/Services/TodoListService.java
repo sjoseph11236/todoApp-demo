@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.json.simple.JSONObject;
 
 import java.util.Optional;
+import java.util.UUID;
 
 public interface TodoListService {
 
@@ -14,7 +15,7 @@ public interface TodoListService {
 
     // get one by id
 
-    Optional<TodoList> getToDoListById();
+    Optional<TodoList> getToDoListById(UUID id);
 
     // delete all
 
@@ -22,14 +23,14 @@ public interface TodoListService {
 
     // delete by id
 
-    JSONObject deleteToDoListById();
+    JSONObject deleteToDoListById(UUID id);
 
     // update by id
 
-    JSONObject updateToDoListById();
+    JSONObject updateToDoListById(UUID id);
 
     // post todolist
 
-    JSONObject postToDoList();
+    JSONObject postToDoList(TodoList todoList);
 
 }

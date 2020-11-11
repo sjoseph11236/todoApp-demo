@@ -6,44 +6,55 @@ import org.json.simple.JSONObject;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class TodoListServiceImpl implements TodoListService {
-
-
-    TodoListRepo todoRepo;
+    
+    TodoListRepo todoListRepo;
 // https://reflectoring.io/constructor-injection/
-    public TodoListServiceImpl(TodoListRepo todoRepo){
-        this.todoRepo = todoRepo;
+    public TodoListServiceImpl(TodoListRepo todoListRepo){
+        this.todoListRepo = todoListRepo;
     }
 
     @Override
     public Iterable<TodoList> getAllToDoLists() {
-        return null;
+        return todoListRepo.findAll();
     }
 
     @Override
-    public Optional<TodoList> getToDoListById() {
-        return Optional.empty();
+    public Optional<TodoList> getToDoListById(UUID id) {
+        return todoListRepo.findById(id);
     }
 
     @Override
     public JSONObject deleteAllToDoLists() {
-        return null;
+
+
+
+        JSONObject responseBody = new JSONObject();
+        responseBody.put("message", "Todo List updated");
+        return responseBody;
     }
 
     @Override
-    public JSONObject deleteToDoListById() {
-        return null;
+    public JSONObject deleteToDoListById(UUID id) {
+        JSONObject responseBody = new JSONObject();
+        responseBody.put("message", "Todo List updated");
+        return responseBody;
     }
 
     @Override
-    public JSONObject updateToDoListById() {
-        return null;
+    public JSONObject updateToDoListById(UUID id) {
+        JSONObject responseBody = new JSONObject();
+        responseBody.put("message", "Todo List updated");
+        return responseBody;
     }
 
     @Override
-    public JSONObject postToDoList() {
-        return null;
+    public JSONObject postToDoList(TodoList todoList) {
+        JSONObject responseBody = new JSONObject();
+        responseBody.put("message", "Todo List updated");
+        return responseBody;
     }
 }

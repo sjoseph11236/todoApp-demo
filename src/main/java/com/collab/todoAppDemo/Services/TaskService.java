@@ -5,6 +5,7 @@ import com.collab.todoAppDemo.Models.TodoList;
 import org.json.simple.JSONObject;
 
 import java.util.Optional;
+import java.util.UUID;
 
 public interface TaskService {
 
@@ -14,7 +15,7 @@ public interface TaskService {
 
     // get one by id
 
-    Optional<Task> getTaskById();
+    Optional<Task> getTaskById(UUID id);
 
     // delete all
 
@@ -22,14 +23,14 @@ public interface TaskService {
 
     // delete by id
 
-    JSONObject deleteTaskById();
+    JSONObject deleteTaskById(UUID id);
 
     // update by id
 
-    JSONObject updateTaskById();
+    JSONObject updateTaskById(UUID id, Task task);
 
     // post Task
 
-    JSONObject postTask();
+    JSONObject postTask(Task task);
 
 }
