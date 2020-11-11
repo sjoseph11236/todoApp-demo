@@ -2,6 +2,7 @@ package com.collab.todoAppDemo.Services;
 
 import com.collab.todoAppDemo.Models.TodoList;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.json.simple.JSONObject;
 
 import java.util.Optional;
 
@@ -17,12 +18,18 @@ public interface TodoListService {
 
     // delete all
 
-    JsonFormat deleteAllToDoLists();
+    JSONObject deleteAllToDoLists();
 
     // delete by id
 
+    JSONObject deleteToDoListById();
+
     // update by id
 
+    JSONObject updateToDoListById();
+
     // post todolist
+
+    JSONObject postToDoList();
 
 }
