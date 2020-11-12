@@ -29,23 +29,33 @@ public class TodoListServiceImpl implements TodoListService {
 
     @Override
     public JSONObject deleteAllToDoLists() {
-
-
+        todoListRepo.deleteAll();
 
         JSONObject responseBody = new JSONObject();
-        responseBody.put("message", "Todo List updated");
+        responseBody.put("message", "all Todo Lists deleted");
         return responseBody;
     }
 
     @Override
     public JSONObject deleteToDoListById(UUID id) {
+        todoListRepo.deleteById(id);
+
         JSONObject responseBody = new JSONObject();
-        responseBody.put("message", "Todo List updated");
+        responseBody.put("message", "Todo List deleted");
         return responseBody;
     }
 
     @Override
-    public JSONObject updateToDoListById(UUID id) {
+    public JSONObject updateToDoListById(UUID id, TodoList newToDoList) {
+        Optional<TodoList> optionalTodoList = todoListRepo.findById(id);
+
+        optionalTodoList.map(todoList -> {
+           todoList.setTasks(newToDoList.getTasks());
+           todoList.setTitle(newToDoList.getTitle());
+           return todoList;
+        });
+
+
         JSONObject responseBody = new JSONObject();
         responseBody.put("message", "Todo List updated");
         return responseBody;
@@ -53,6 +63,8 @@ public class TodoListServiceImpl implements TodoListService {
 
     @Override
     public JSONObject postToDoList(TodoList todoList) {
+        todoListRepo.save(todoList);
+
         JSONObject responseBody = new JSONObject();
         responseBody.put("message", "Todo List updated");
         return responseBody;

@@ -30,7 +30,7 @@ public class TaskServiceImpl implements TaskService {
     public JSONObject deleteAllTasks() {
         taskRepo.deleteAll();
         JSONObject responseBody = new JSONObject();
-        responseBody.put("message", "Task deleted");
+        responseBody.put("message", "all Tasks deleted");
         return responseBody;
     }
 
