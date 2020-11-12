@@ -23,6 +23,12 @@ public class TodoListServiceImpl implements TodoListService {
     }
 
     @Override
+    public Optional<TodoList> getToDoListByTitle(String title) {
+        return todoListRepo.findByTitle(title);
+    }
+
+
+    @Override
     public Optional<TodoList> getToDoListById(UUID id) {
         return todoListRepo.findById(id);
     }

@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @Component
 public class Runner implements CommandLineRunner {
 
@@ -27,7 +30,11 @@ public class Runner implements CommandLineRunner {
 
             todoListRepo.save(todoList);
 
-            Task task = new Task( "Clean Room", todoList);
+            Optional<TodoList> optionalTodoList = todoListRepo.findByTitle("General Tasks");
+
+            TodoList todoList1 = optionalTodoList.get();
+
+            Task task = new Task( "Clean Room",todoList1 );
 
             taskRepo.save(task);
         }
