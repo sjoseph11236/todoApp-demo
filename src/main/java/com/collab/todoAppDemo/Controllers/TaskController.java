@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/task")
+@CrossOrigin
 public class TaskController {
 
     TaskService taskService;
