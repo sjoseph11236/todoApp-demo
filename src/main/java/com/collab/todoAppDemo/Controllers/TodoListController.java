@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/todolist")
+@CrossOrigin
 public class TodoListController {
 
         TodoListService TodoListService;
