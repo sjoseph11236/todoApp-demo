@@ -46,19 +46,18 @@ public class TodoListServiceImpl implements TodoListService {
     }
 
     @Override
-    public JSONObject updateToDoListById(UUID id, TodoList newToDoList) {
-        Optional<TodoList> optionalTodoList = todoListRepo.findById(id);
-
-        optionalTodoList.map(todoList -> {
+    public Optional<TodoList> updateToDoListById(UUID id, TodoList newToDoList) {
+        todoListRepo.findById(id)
+                .map(todoList -> {
            todoList.setTasks(newToDoList.getTasks());
            todoList.setTitle(newToDoList.getTitle());
-           return todoList;
+           return todoListRepo.save(todoList);
         });
 
 
-        JSONObject responseBody = new JSONObject();
-        responseBody.put("message", "Todo List updated");
-        return responseBody;
+//        JSONObject responseBody = new JSONObject();
+        System.out.println(todoListRepo.findById(id));
+        return todoListRepo.findById(id);
     }
 
     @Override

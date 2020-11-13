@@ -1,5 +1,8 @@
 package com.collab.todoAppDemo.Models;
 
+import com.fasterxml.jackson.annotation.*;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.UUID;
 
@@ -8,10 +11,13 @@ import java.util.UUID;
 public class Task {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @GeneratedValue(generator = "uuid2")
+    @Column(name = "id", updatable = false, nullable = false, unique=true, columnDefinition = "BINARY(16)")
     private UUID id;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "todoList_id")
+    @JsonIgnore
     private TodoList todoList;
     private String description;
     private Boolean isComplete = false;

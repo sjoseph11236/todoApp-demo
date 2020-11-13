@@ -35,7 +35,7 @@ public class TaskController {
     }
 
     @PutMapping("/put/{id}")
-    public JSONObject putTask(@PathVariable UUID id,  @RequestBody Task task){
+    public Optional<Task> putTask(@PathVariable UUID id, @RequestBody Task task){
         return taskService.updateTaskById(id, task);
     }
 

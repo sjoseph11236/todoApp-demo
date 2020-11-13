@@ -27,7 +27,7 @@ public interface TodoListService {
 
     // update by id
 
-    JSONObject updateToDoListById(UUID id, TodoList todoList);
+    Optional<TodoList> updateToDoListById(UUID id, TodoList todoList);
 
     // post todolist
 
