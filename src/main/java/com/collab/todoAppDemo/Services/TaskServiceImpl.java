@@ -43,20 +43,19 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public JSONObject updateTaskById(UUID id, Task newTask) {
-        Optional<Task> optionalTask = taskRepo.findById(id);
-
-        optionalTask.map(task -> {
+    public Optional<Task> updateTaskById(UUID id, Task newTask) {
+        taskRepo.findById(id)
+                .map(task -> {
             task.setComplete(newTask.getComplete());
             task.setDescription(newTask.getDescription());
             task.setTodoList(newTask.getTodoList());
-            return task;
+            return taskRepo.save(task);
         });
 
 
-        JSONObject responseBody = new JSONObject();
-        responseBody.put("message", "Task updated");
-        return responseBody;
+//        JSONObject responseBody = new JSONObject();
+//        responseBody.put("message", "Task updated");
+        return taskRepo.findById(id);
     }
 
     @Override

@@ -35,7 +35,7 @@ public class TodoListController {
     }
 
     @PutMapping("/put/{id}")
-    public JSONObject putTodoList(@PathVariable UUID id,  @RequestBody TodoList TodoList){
+    public Optional<TodoList> putTodoList(@PathVariable UUID id,  @RequestBody TodoList TodoList){
         return TodoListService.updateToDoListById(id, TodoList);
     }
 

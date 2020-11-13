@@ -27,7 +27,7 @@ public interface TaskService {
 
     // update by id
 
-    JSONObject updateTaskById(UUID id, Task task);
+    Optional<Task> updateTaskById(UUID id, Task task);
 
     // post Task
 
