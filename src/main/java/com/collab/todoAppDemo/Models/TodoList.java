@@ -18,6 +18,7 @@ public class TodoList {
     @Id
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @GeneratedValue(generator = "uuid2")
+    @Column(name = "id", updatable = false, nullable = false, unique=true, columnDefinition = "BINARY(16)")
     private UUID id;
     private String title;
     @OneToMany(mappedBy = "todoList", fetch = FetchType.LAZY,
