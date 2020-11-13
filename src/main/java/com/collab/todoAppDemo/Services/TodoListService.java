@@ -13,6 +13,9 @@ public interface TodoListService {
 
     Iterable<TodoList> getAllToDoLists();
 
+    //    get on by title
+    Optional<TodoList> getToDoListByTitle(String title);
+
     // get one by id
 
     Optional<TodoList> getToDoListById(UUID id);

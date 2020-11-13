@@ -27,11 +27,11 @@ public class Task {
     public Task(String description){
         this.description = description;
     }
+
     public Task(String description, TodoList todoList){
         this.description = description;
         this.todoList = todoList;
     }
-
 
     public UUID getId() {
         return id;
