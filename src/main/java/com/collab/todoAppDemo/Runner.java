@@ -34,6 +34,8 @@ public class Runner implements CommandLineRunner {
 
             TodoList todoList1 = optionalTodoList.get();
 
+            System.out.println("this is todolist1" + todoList);
+
             Task task = new Task( "Clean Room",todoList1 );
 
             taskRepo.save(task);
