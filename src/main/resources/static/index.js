@@ -8,6 +8,7 @@ const loadFetchedVideoList = () => {
 
 // Method to get todoList from Api
 const fetchVideos = async () => {
+// fetch is built in javascript api for my HTTP request
     const response  = await fetch("http://localhost:8000/api/todolist/get/all");
     const  data = await response.json();
     fetchedVideoList = data;

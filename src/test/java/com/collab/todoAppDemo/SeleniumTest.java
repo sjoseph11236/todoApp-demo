@@ -1,16 +1,25 @@
 package com.collab.todoAppDemo;
 
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import static org.junit.Assert.assertEquals;
+
 
 public class SeleniumTest {
 
     WebDriver driver;
+    WebElement todoListContainer;
+    List<WebElement> children;
 
     @BeforeEach
     public void setUp() {
@@ -23,11 +32,20 @@ public class SeleniumTest {
 
 //        Make the browser full screen
         driver.manage().window().maximize();
+        System.out.println("user is on google search page");
+        driver.get("http://localhost:8000/");
     }
 
     @Test
     public void test() {
-        System.out.println("user is on google search page");
-        driver.get("http://localhost:8000/");
+        todoListContainer = driver.findElement(By.id("todoListContainer"));
+        children = todoListContainer.findElements(By.className("card"));
+        assertEquals(2, children.size());
+    }
+
+    @AfterEach
+    public void tearDown() {
+        driver.close();
+        driver.quit();
     }
 }
