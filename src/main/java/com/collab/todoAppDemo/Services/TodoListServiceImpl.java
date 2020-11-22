@@ -71,7 +71,7 @@ public class TodoListServiceImpl implements TodoListService {
         todoListRepo.save(todoList);
 
         JSONObject responseBody = new JSONObject();
-        responseBody.put("message", "Todo List updated");
+        responseBody.put("message", "Todo List posted");
         return responseBody;
     }
 }
