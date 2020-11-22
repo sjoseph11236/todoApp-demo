@@ -1,7 +1,6 @@
 package com.collab.todoAppDemo.mock;
 
 import com.collab.todoAppDemo.Controllers.TodoListController;
-import com.collab.todoAppDemo.Models.TodoList;
 import com.collab.todoAppDemo.Repositories.TodoListRepo;
 import com.collab.todoAppDemo.Services.TodoListService;
 import org.junit.Test;
