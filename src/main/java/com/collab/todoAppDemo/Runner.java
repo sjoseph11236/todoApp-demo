@@ -27,17 +27,19 @@ public class Runner implements CommandLineRunner {
     public void run(String... args) throws JsonProcessingException {
 
         if(taskRepo.count() == 0 && todoListRepo.count() == 0) {
-            TodoList todoList = new TodoList("General Tasks");
+            TodoList todoList = new TodoList("My Other Tasks");
 
             todoListRepo.save(todoList);
 
-            Optional<TodoList> optionalTodoList = todoListRepo.findByTitle("General Tasks");
+            Optional<TodoList> optionalTodoList = todoListRepo.findByTitle("My Other Tasks");
 
             TodoList todoList1 = optionalTodoList.get();
 
-            Task task = new Task( "Clean Room",todoList1 );
+            Task task = new Task( "Clean Room",todoList1);
+            Task task2 = new Task( "Clean Brother's Room",todoList1);
 
             taskRepo.save(task);
+            taskRepo.save(task2);
         }
 
         System.out.println("database seeded with total task of: " + taskRepo.count() + " and total todo lists of: " + todoListRepo.count());
