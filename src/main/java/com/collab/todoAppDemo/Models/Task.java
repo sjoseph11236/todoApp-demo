@@ -65,7 +65,6 @@ public class Task {
     public String toString() {
         return "Task{" +
                 "id=" + id +
-                ", todoList=" + todoList +
                 ", description='" + description + '\'' +
                 ", isComplete=" + isComplete +
                 '}';
